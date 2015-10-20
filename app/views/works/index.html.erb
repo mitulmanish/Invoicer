@@ -1,0 +1,9 @@
+<ul>
+<% @works.each do |work| %>
+	<% if work.hours.nil? %>
+	<li><%= "N/A" %> </li>
+	<% else %>
+	<li><%= link_to work.datetimeperformed,work %> </li> 
+	<% end %>
+<% end %>
+</ul>
