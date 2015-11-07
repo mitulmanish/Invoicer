@@ -17,7 +17,9 @@ Invoicer::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
       resources :companies
-      resources :users
+      resources :users do
+        patch :my_method
+      end
       resources :projects
       resources :works
 

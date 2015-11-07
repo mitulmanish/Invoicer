@@ -5,7 +5,7 @@ class WorksController < ApplicationController
 
 	def show
 		@work = Work.find(params[:id])
-		@project = @work.project
-		@user = @work.user
+		@user = User.find_by_id(@work.user_id)
+		@project = Project.find_by_id(@work.project_id)
 	end
 end
