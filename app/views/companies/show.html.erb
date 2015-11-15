@@ -1,26 +1,16 @@
-<h1> Show page </h1>
 
-<%= @company.name%>
-</br>
-<ul>
-<% @projects.each do |project| %>
-	<li><%= link_to project.name, project %></li>
-</br>
-<% end %>
-</ul>
 
-</br>
-<ul>
-<% @users.each do |user| %>
-    <% my_id = user.id %>
-	<li><%= link_to user.fname , user %></li>
-	<li><%= link_to 'Edit User' , edit_user_path(user) %></li>
-	<li><%= link_to 'Destroy', user ,
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></li>
-    <li><%= link_to 'My Method', user_my_method_path(4) ,
-              method: :patch %></li>
-</br>
-<% end %>
-</ul>
-<h1> <%= link_to 'New User' , new_user_path %> </h1>
+
+<table>
+	<tbody>
+		<tr>
+			<th>Project</th>
+			<th>Company</th>
+		</tr>
+		<%= render partial: "projects" %>
+	</tbody>
+</table>
+
+<% content_for :aside do %>
+	<%= link_to "Back", companies_path %></br>
+<% end %> 

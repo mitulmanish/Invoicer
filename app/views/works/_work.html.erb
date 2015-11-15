@@ -1,0 +1,14 @@
+<% @works.each do |work| %>
+	<% if work.hours.nil? %>
+		<% next %>
+	<% else %>
+		<tr>
+		<td><%=  link_to work.employee, work %> </td> 
+		<td><%= link_to work.on_project, work.project %></td>
+		<td><%= work.datenTime  %> </td> 
+		<td><%=  work.hours_worked %> </td> 
+		<td><%=  work.project.default_rate %> </td> 
+		<td><%=  work.hours * work.project.default_rate  %> </td> 
+	<% end %>
+	</tr>
+<% end %>

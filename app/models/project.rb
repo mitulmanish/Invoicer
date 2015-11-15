@@ -3,5 +3,7 @@ class Project < ActiveRecord::Base
 	has_many :works
 	has_many :users, :through => :works
 
-
+	def to_s
+		"#{name}"
+	end
 end

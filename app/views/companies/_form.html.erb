@@ -1,0 +1,5 @@
+<%= form_for @company, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+	<%= label_tag(:name, "Company Name:") %>
+	<%= f.text_field :name ,:placeholder => 'Eg Apple' %>
+<%= f.submit "Create" %>
+<% end %>

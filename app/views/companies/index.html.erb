@@ -1,6 +1,16 @@
-<h1> Companies :Index </h1>
-<ul>
-<% @companies.each do |company| %>
-	<li><%= link_to company.name, company %></li>
-<% end %>	
-</ul>
+<table>
+<tbody>
+	<tr>
+		<th>Company</th>
+	</tr>
+	<% @companies.each do |company| %>
+	<tr>
+		<td><%= link_to company.name, company %></td>
+	<% end %>	
+	</tr>
+</tbody>
+</table>
+
+<% content_for :aside do %>
+	<%= link_to "Add Company", new_company_path %>
+<% end %> 

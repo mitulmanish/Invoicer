@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   	@project = Project.find_by slug: params[:slug]
   	else
   	@project = Project.find(params[:id])
+    @works = @project.works
   	end
   end
 end

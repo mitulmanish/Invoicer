@@ -1,5 +1,6 @@
 class Work < ActiveRecord::Base
-	
+	belongs_to :user
+	belongs_to :project
 	validates :project_id, presence: true
 	validates :user_id, presence: true
 	validates :datetimeperformed, presence: true
@@ -23,6 +24,34 @@ class Work < ActiveRecord::Base
 	end
 
 	def formatted_date
-		Date.parse(datetimeperformed)
+		#date_format
+		datetimeperformed.to_formatted_s(:long_ordinal)
 	end
+
+	def date_format
+		datetimeperformed.strftime("%d/%m/%Y %I:%M %p")
+	end
+
+	def to_s
+	    "#{user}"
+	end
+	
+
+	def employee
+		"#{user}"
+	end
+
+	def on_project
+		"#{project}"
+	end
+
+	def datenTime
+		"#{formatted_date}" 
+	end
+
+	def hours_worked
+		"#{hours} hours"
+	end
+
+	
 end

@@ -1,5 +1,9 @@
-<ul>
-<% @projects.each do |project| %>
-	<li><%= link_to project.name,project %></li>
-<% end %>
-</ul>
+<table>
+	<tbody>
+		<tr>
+			<th>Project</th>
+			<th>Company</th>
+		</tr>
+		<%= render partial: "./companies/projects"  %>
+	</tbody>
+</table>
