@@ -11,4 +11,8 @@ class ProjectsController < ApplicationController
     @works = @project.works
   	end
   end
+  def new
+    @project = Project.new
+  end
+
 end

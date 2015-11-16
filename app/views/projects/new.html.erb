@@ -1,0 +1,22 @@
+<%= form_for @project , url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+	<div>
+		<%= f.label :name, "Project Name" %>
+		<%= f.text_field :name ,:placeholder => 'Eg Ruby on Rails' %>
+	</div>
+	<div>
+		<%= f.label :company_id %>
+		<%= f.collection_select(:company_id, Company.all, :id, :name, prompt: true) %>
+	</div>
+	<div>
+		<%= f.label :default_rate, " Rate " %>
+		<%= f.text_field :default_rate ,:placeholder => 50 %>
+	</div>
+	<div>
+		<%= f.label :slug %>
+		<%= f.text_field :slug ,:placeholder => 'Any Name' %>
+	</div>
+	
+	<div>
+	<%= f.submit "Create Entry" %>
+	</div>
+<% end %>
