@@ -14,6 +14,31 @@ class WorksController < ApplicationController
 	end
 
 	def create	
+		@work = Work.new(work_params)
+		if @work.save
+			redirect_to @work
+		else
+			render 'new'
+		end
+	end
+
+	def edit
 		@work = Work.find(params[:id])
+	end
+
+	def update
+		@work = Work.find(params[:id])
+
+		if @work.update(work_params)
+			flash[:notice] = 'Work Updated'
+			redirect_to @work
+		else
+			render 'edit'
+		end
+	end
+
+	private
+	def work_params
+		params[:work].permit(:project_id, :datetimeperformed, :hours)
 	end
 end

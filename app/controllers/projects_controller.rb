@@ -15,4 +15,32 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def create
+    @new_project = Project.new(project_params)
+    if @new_project.save
+      redirect_to @new_project
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
+      redirect_to @project
+    else
+      render 'edit'
+    end
+  end
+
+  private
+  def project_params
+    params[:project].permit(:name, :slug, :company_id, :default_rate)
+  end
+
+
 end

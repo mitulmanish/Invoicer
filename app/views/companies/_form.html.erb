@@ -1,10 +1,12 @@
 
-<%= form_for @company, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-<div>
-	<%= label_tag(:name, "Company Name:") %>
-	<%= f.text_field :name ,:placeholder => 'Eg Apple' %>
-</div>
-<div>
-<%= f.button "Create" %>
-<div>
+
+
+<%= form_for(@company) do |f| %>
+	<div>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+	<div>
+		<%=  @company.new_record? ? "Create Company" : "Update Company"f.submit  %>
+	</div>
 <% end %>

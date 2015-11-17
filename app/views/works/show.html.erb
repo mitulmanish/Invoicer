@@ -1,8 +1,8 @@
+<p> <%= link_to "Edit Work Item", edit_work_path(@work) %> </p>
 <p> Project: <%=  @project.name %> </p>
 <p> User: <%= @user.fname %></p>
 <p> Work: <%=  @work.hours %> </p>
 
 <% content_for :aside do %>
 	<%= link_to "Back", works_path %></br>
-	<%= link_to "Add Company", new_work_path %>
 <% end %> 
