@@ -19,7 +19,7 @@ function drawPath() {
 		context.fill();
 
 		context.fillStyle="#fff";
-		context.font = "small-caps bold 37pt 'Calibri'";
+		context.font = "small-caps bold 37pt 'Geneva'";
 		context.textAlign = "left";
 		context.fillText("Invoicer",100,50);
 	}
