@@ -1,4 +1,8 @@
-class UsersController < ApplicationController
+class User::RegistrationsController < Devise::RegistrationsController
+	before_filter :configure_permitted_parameters
+
+  
+
 	
 	def index 
 		@users = User.all
@@ -42,5 +46,10 @@ class UsersController < ApplicationController
   def user_params
     params[:user].permit(:fname, :lname, :company_id, :email)
   end
+  protected
+
+      def configure_permitted_parameters
+	    devise_parameter_sanitizer.for(:sign_up).push(:fname, :lname)
+	  end
 
 end

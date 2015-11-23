@@ -1,5 +1,6 @@
 Invoicer::Application.routes.draw do
   
+  devise_for :users, :controllers => { :registrations => "user/registrations" }
   get "projects/index"
   get "projects/show"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -17,9 +18,6 @@ Invoicer::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
       resources :companies
-      resources :users do
-        patch :my_method
-      end
       resources :projects
       resources :works
 
