@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
 	belongs_to :owner, class_name: 'User'
 	validates :name, length: { minimum: 5 }
 	validates :company_id, presence: true
+	validates :owner_id, presence: true
 	validates :default_rate, numericality: { only_integer: true,
 																					 greater_than: 30,
 																					 less_than: 100 }

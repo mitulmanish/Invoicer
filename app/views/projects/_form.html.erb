@@ -27,6 +27,11 @@
     </div>
 
     <div>
+      <%= f.label :owner_id %>
+      <%= f.collection_select(:owner_id, User.all, :id, :to_s, prompt: true) %>
+    </div>
+
+    <div>
       <%= f.submit @project.new_record? ? "Create Project" : "Update Project" %>
     </div>
 <% end %>

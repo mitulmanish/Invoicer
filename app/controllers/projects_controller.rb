@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update(project_params)
-      redirect_to @project
+      redirect_to projects_path
     else
       render 'edit'
     end
@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params[:project].permit(:name, :slug, :company_id, :default_rate)
+    params[:project].permit(:name, :slug, :company_id, :default_rate, :owner_id)
   end
 
 

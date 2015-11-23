@@ -10,6 +10,10 @@
 		<%= f.text_field :lname ,:placeholder => 'Black' %>
 	</div>
 	<div>
+		<%= f.label :email %>
+		<%= f.text_field :email ,:placeholder => 'xyz@gmail.com' %>
+	</div>
+	<div>
 		<%= f.label :company_id %>
 		<%= f.collection_select(:company_id, Company.all, :id, :name, prompt: true) %>
 	</div>

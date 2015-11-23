@@ -4,6 +4,15 @@ class UsersController < ApplicationController
 		@users = User.all
 	end
 
+	def create
+    @user = User.new(user_params)
+	    if @user.save
+	      redirect_to users_path
+	    else
+	      render 'new'
+	    end
+  	end
+
 	def show 
 		@my_user = User.find(params[:id])
 		@my_projects  = @my_user.projects
@@ -27,6 +36,11 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
  		@user.destroy
     	redirect_to users_path
-	end
-	
+  end
+
+  private
+  def user_params
+    params[:user].permit(:fname, :lname, :company_id, :email)
+  end
+
 end

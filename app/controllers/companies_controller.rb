@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
 		@company = Company.new(company_params)
 		if @company.save
 			flash[:notice] = 'Company Created'
-			redirect_to @company
+			redirect_to companies_path
 		else
 			render 'new'
 		end
