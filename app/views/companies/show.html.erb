@@ -1,6 +1,6 @@
 
 
-<p> <%= link_to "Edit", edit_company_path(@company) %> </p>
+<p> <button><%= link_to "Edit", edit_company_path(@company) %> </button> </p>
 <table>
 	<tbody>
 		<tr>
@@ -13,5 +13,5 @@
 
 
 <% content_for :aside do %>
-	<%= link_to "Back", companies_path %></br>
+	<button><%= link_to "Back", companies_path %></button></br>
 <% end %> 

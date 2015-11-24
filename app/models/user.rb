@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 	#validates :fname, presence: true
 
 	def to_s
-		"#{lname}  #{fname}"
+		"#{fname}  #{lname}"
 	end
 
 end
