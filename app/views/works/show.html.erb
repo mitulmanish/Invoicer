@@ -2,7 +2,9 @@
 <p> Project: <%=  @project.name %> </p>
 <p> User: <%= @user.fname %></p>
 <p> Work: <%=  @work.hours %> </p>
-
+<% if @work.doc %>
+    <p>Document: <%= link_to @work.doc, "/uploads/#{@work.doc}" %></p>
+<% end %>
 <% content_for :aside do %>
-	<button><%= link_to "Back", works_path %></br></button>
+	
 <% end %> 

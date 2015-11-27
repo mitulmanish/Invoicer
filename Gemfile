@@ -34,6 +34,7 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+gem 'simple_form'
 #gem 'eventmachine', '~> 1.0.8'
 
 # Use ActiveModel has_secure_password

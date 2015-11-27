@@ -16,6 +16,13 @@ class WorksController < ApplicationController
 
 	def create	
 		@work = Work.new(work_params)
+    if params[:doc]
+      uploaded_io = params[:doc]
+      File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+        file.write(uploaded_io.read)
+        @work.doc = uploaded_io.original_filename
+      end
+    end
 		if @work.save
 			redirect_to works_path
 		else
