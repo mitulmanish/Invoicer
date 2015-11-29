@@ -20,6 +20,7 @@ Invoicer::Application.routes.draw do
       resources :companies
       resources :projects
       resources :works
+      resources :users
 
       get 'invoicer/:slug' => 'projects#show'
   # Example resource route with options:

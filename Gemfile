@@ -35,6 +35,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 gem 'simple_form'
+gem 'figaro'
+#gem "chartkick"
+#gem 'groupdate'
+#gem 'hightop'
 #gem 'eventmachine', '~> 1.0.8'
 
 # Use ActiveModel has_secure_password

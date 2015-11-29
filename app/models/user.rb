@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-	belongs_to :company
 	has_many :works
 	has_many :projects , :through => :works
 	has_many :projects_owned, :foreign_key => 'owner_id', :class_name => 'Project'
-	#validates :fname, presence: true
+	validates :fname, presence: true
+	validates :lname, presence: true
 
 	def to_s
 		"#{fname}  #{lname}"

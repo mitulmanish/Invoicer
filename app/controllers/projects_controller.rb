@@ -2,6 +2,12 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
   def index
   	@projects = Project.all
+    respond_to do |format|
+      format.html
+      format.xml  { render xml: @projects}
+      format.json { render json: @projects}
+      format.csv { send_data Project.export_csv(@projects), type: 'text/csv; charset=utf-8; header=present', disposition: 'attachment; filename=contacts.csv' }
+    end
   end
 
   def show
@@ -10,7 +16,12 @@ class ProjectsController < ApplicationController
   	else
   	@project = Project.find(params[:id])
     @works = @project.works
-  	end
+    end
+    respond_to do |format|
+      format.html
+      format.xml  { render xml: @project}
+      format.json { render json: @project.owner}
+    end
   end
   def new
     @project = Project.new
@@ -38,6 +49,7 @@ class ProjectsController < ApplicationController
       render 'edit'
     end
   end
+
 
   private
   def project_params

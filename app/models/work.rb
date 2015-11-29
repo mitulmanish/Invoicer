@@ -33,7 +33,7 @@ class Work < ActiveRecord::Base
 	end
 
 	def to_s
-	    "#{user}"
+	    "#{hours} by #{user} on #{datetimeperformed}"
 	end
 	
 

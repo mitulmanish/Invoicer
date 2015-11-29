@@ -1,13 +1,27 @@
 class WorksController < ApplicationController
 	before_action :authenticate_user!
 	def index
-		@works = Work.all
+		@works = Work.order('updated_at DESC')
+
+    frequencies = Hash.new(0)
+    @works.each { |work| frequencies[work.hours] += 1 }
+    frequencies.keys.sort!
+    respond_to do |format|
+      format.html
+      format.xml  { render xml: @works}
+      format.json { render json: frequencies}
+    end
 	end
 
 	def show
 		@work = Work.find(params[:id])
 		@user = User.find_by_id(@work.user_id)
 		@project = Project.find_by_id(@work.project_id)
+    respond_to do |format|
+      format.html
+      format.xml  { render xml: @work}
+      format.json { render json: @work}
+    end
 	end
 
 	def new
@@ -24,6 +38,7 @@ class WorksController < ApplicationController
       end
     end
 		if @work.save
+			ExampleMailer.workcreated_email(@work).deliver
 			redirect_to works_path
 		else
 			render 'new'
@@ -38,6 +53,14 @@ class WorksController < ApplicationController
 		@work = Work.find(params[:id])
 
 		if @work.update(work_params)
+      if params[:doc]
+        uploaded_io = params[:doc]
+        File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+          file.write(uploaded_io.read)
+          @work.doc = uploaded_io.original_filename
+          ExampleMailer.workupdated_email(@work).deliver
+        end
+      end
 			flash[:notice] = 'Work Updated'
 			redirect_to @work
 		else

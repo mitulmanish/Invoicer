@@ -1,16 +1,13 @@
 class User::RegistrationsController < Devise::RegistrationsController
 	before_filter :configure_permitted_parameters
-
-  
-
-	
-	def index 
+  def index
 		@users = User.all
-	end
+  end
 
 	def create
     @user = User.new(user_params)
 	    if @user.save
+				ExampleMailer.sample_email(@user).deliver
 	      redirect_to users_path
 	    else
 	      render 'new'
@@ -21,6 +18,7 @@ class User::RegistrationsController < Devise::RegistrationsController
 		@my_user = User.find(params[:id])
 		@my_projects  = @my_user.projects
 		@my_company = @my_user.company
+
 	end
 
 	def new
@@ -48,8 +46,8 @@ class User::RegistrationsController < Devise::RegistrationsController
   end
   protected
 
-      def configure_permitted_parameters
-	    devise_parameter_sanitizer.for(:sign_up).push(:fname, :lname)
-	  end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up).push(:fname, :lname)
+  end
 
 end

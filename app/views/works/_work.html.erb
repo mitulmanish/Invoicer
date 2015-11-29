@@ -9,6 +9,10 @@
 		<td><%=  work.hours_worked %> </td> 
 		<td><%=  work.project.default_rate %> </td>
 		<td><%=  work.hours * work.project.default_rate  %> </td>
+     <td> <% if work.doc %>
+            <p>Document: <%= link_to work.doc, "/uploads/#{work.doc}" %></p>
+          <% end %>
+     </td>
 	<% end %>
 	</tr>
 <% end %>

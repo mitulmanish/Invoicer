@@ -118,7 +118,7 @@ header nav li a:hover, header nav li.active a {
 	padding-right:0.5em;
 	padding-left:0.5em;
 	float:right;
-	width:15%;
+	width:10%;
 	text-align:center;
 	background-color:#E4F1FE;
 	opacity: 0.9;
@@ -126,7 +126,6 @@ header nav li a:hover, header nav li.active a {
 	border: 2px;
     border-radius: 5px;
     z-index: 1000;
-    font-style: bold;
 }
 
 #main aside ul {
