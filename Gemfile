@@ -36,6 +36,7 @@ group :doc do
 end
 gem 'simple_form'
 gem 'figaro'
+#gem 'date_time_attribute', '~> 0.1.2'
 #gem "chartkick"
 #gem 'groupdate'
 #gem 'hightop'

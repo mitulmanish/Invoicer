@@ -8,7 +8,6 @@ class Work < ActiveRecord::Base
 	validates :hours, numericality: { only_integer: true,
 									  greater_than: 0,
 									  less_than_or_equal_to: 8 }
-
 	scope :fullday, -> { where("hours >= 8") }
 	#scope :recent, -> { where("datetimeperformed > '#{Time.now - 7.days}'")}
 
