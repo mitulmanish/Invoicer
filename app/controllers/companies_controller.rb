@@ -1,12 +1,11 @@
 class CompaniesController < ApplicationController
+	before_action :find_company, only: [:show, :edit, :update]
 	def index
 		@companies = Company.all
 	end
 
 	def show
-		@company = Company.find(params[:id])
 		@projects = @company.projects
-		@users = @company.users
 		respond_to do |format|
 			format.html # show.html.erb
 			format.xml  { render xml: @company}
@@ -28,7 +27,6 @@ class CompaniesController < ApplicationController
 	end
 
 	def update
-		@company = Company.find(params[:id])
 		if @company.update(company_params)
 			flash[:notice] = 'Company Updated'
 			redirect_to @company
@@ -38,10 +36,12 @@ class CompaniesController < ApplicationController
 	end
 
 	def edit
-		@company = Company.find(params[:id])
 	end
 
 	private
+	def find_company
+		@company = Company.find(params[:id])
+	end
 	def company_params
 		params[:company].permit(:name)
 	end

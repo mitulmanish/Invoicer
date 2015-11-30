@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
 	before_action :authenticate_user!
+	before_action :find_work_item, only: [:show, :edit, :update]
 	def index
 		@works = Work.order('updated_at DESC')
 
@@ -14,7 +15,7 @@ class WorksController < ApplicationController
 	end
 
 	def show
-		@work = Work.find(params[:id])
+
 		@user = User.find_by_id(@work.user_id)
 		@project = Project.find_by_id(@work.project_id)
     respond_to do |format|
@@ -46,11 +47,10 @@ class WorksController < ApplicationController
 	end
 
 	def edit
-		@work = Work.find(params[:id])
+
 	end
 
 	def update
-		@work = Work.find(params[:id])
 
 		if @work.update(work_params)
       if params[:doc]
@@ -71,5 +71,8 @@ class WorksController < ApplicationController
 	private
 	def work_params
 		params[:work].permit(:project_id, :datetimeperformed, :hours, :user_id)
-	end
+  end
+  def find_work_item
+    @work = Work.find(params[:id])
+  end
 end
